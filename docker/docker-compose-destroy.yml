@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+
+  template-terraform-destroy:
+    image: template-terraform:0.0.1
+    container_name: template-terraform
+    environment:
+      - CREDENTIAL=${CREDENTIAL}
+      - TYPE=DESTROY
+    volumes:
+      - ./volumes/terraform.tfstate:/scripts/terraform.tfstate
