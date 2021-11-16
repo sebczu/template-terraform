@@ -2,7 +2,7 @@ version: '3.3'
 services:
 
   template-terraform-apply:
-    image: template-terraform:0.0.1
+    image: sebczu/personal:template-terraform-0.0.1
     container_name: template-terraform
     environment:
       - CREDENTIAL=${CREDENTIAL}
