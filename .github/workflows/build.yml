@@ -18,3 +18,6 @@ jobs:
     - name: Build docker image
       run: >
         docker build -t template-terraform:0.0.1 service
+    - name: Push docker image
+      run: >
+        docker images
