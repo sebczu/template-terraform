@@ -21,6 +21,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: service
+        push: true
         tags: |
           sebczu/personal:template-terraform-0.0.1
           sebczu/personal:template-terraform-latest
