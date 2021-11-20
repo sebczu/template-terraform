@@ -3,9 +3,10 @@ services:
 
   template-terraform-apply:
     image: sebczu/personal:template-terraform-0.0.1
-    container_name: template-terraform
+    container_name: template-terraform-apply
+    command:
+      - apply -auto-approve
     environment:
       - CREDENTIAL=${CREDENTIAL}
-      - TYPE=APPLY
     volumes:
       - ./volumes/terraform.tfstate:/scripts/terraform.tfstate

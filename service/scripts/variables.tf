@@ -5,3 +5,11 @@ variable "project" {
 variable "credentials" {
   default = "/scripts/credential.json"
 }
+
+variable "location" {
+  default = "europe-central2-a"
+}
+
+variable "region" {
+  default = "europe-central2"
+}

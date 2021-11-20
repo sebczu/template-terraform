@@ -23,10 +23,3 @@ jobs:
         context: service
         tags: |
           sebczu/personal:template-terraform-0.0.1
-
-#    - name: Build docker image
-#      run: >
-#        docker build -t sebczu/personal:template-terraform-0.0.1 service
-#    - name: Push docker image
-#      run: >
-#        docker images

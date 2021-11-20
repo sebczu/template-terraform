@@ -3,9 +3,10 @@ services:
 
   template-terraform-destroy:
     image: sebczu/personal:template-terraform-0.0.1
-    container_name: template-terraform
+    container_name: template-terraform-destroy
+    command:
+      - destroy -auto-approve
     environment:
       - CREDENTIAL=${CREDENTIAL}
-      - TYPE=DESTROY
     volumes:
       - ./volumes/terraform.tfstate:/scripts/terraform.tfstate

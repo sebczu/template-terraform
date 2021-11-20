@@ -17,17 +17,29 @@ docker-compose -f docker/docker-compose-destroy.yml up
 
 #### 3. Docker run container (interactive mode)
 ```bash
-docker run -it --entrypoint /bin/bash -v $(pwd)/volumes/terraform.tfstate:/scripts/terraform.tfstate -e "CREDENTIAL={BASE_64_CREDENTIAL}" sebczu/personal:template-terraform-0.0.1
+docker run -it \
+--entrypoint /bin/bash \
+-v $(pwd)/volumes/terraform.tfstate:/scripts/terraform.tfstate \
+-e "CREDENTIAL={BASE_64_CREDENTIAL}" \
+sebczu/personal:template-terraform-0.0.1
 ```
 
 #### 4. Docker run container (create cluster)
 ```bash
-docker run -v $(pwd)/volumes/terraform.tfstate:/scripts/terraform.tfstate -e "CREDENTIAL={BASE_64_CREDENTIAL}" -e "TYPE=APPLY" volumes:/scripts/.terraform sebczu/personal:template-terraform-0.0.1
+docker run \
+-v $(pwd)/volumes/terraform.tfstate:/scripts/terraform.tfstate \
+-e "CREDENTIAL={BASE_64_CREDENTIAL}" \
+sebczu/personal:template-terraform-0.0.1 \
+"apply -auto-approve"
 ```
 
 #### 5. Docker run container (destroy cluster)
 ```bash
-docker run -v $(pwd)/volumes/terraform.tfstate:/scripts/terraform.tfstate -e "CREDENTIAL={BASE_64_CREDENTIAL}" -e "TYPE=DESTROY" volumes:/scripts/.terraform sebczu/personal:template-terraform-0.0.1
+docker run \
+-v $(pwd)/volumes/terraform.tfstate:/scripts/terraform.tfstate \
+-e "CREDENTIAL={BASE_64_CREDENTIAL}" \
+sebczu/personal:template-terraform-0.0.1 \
+"destroy -auto-approve"
 ```
 
 #### 5. Create service account for kubernetes cluster

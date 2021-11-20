@@ -1,7 +1,8 @@
 #!/bin/bash
 echo "STARTED"
 
-echo "TYPE: $TYPE"
+COMMAND=$1
+echo "COMMAND: $COMMAND"
 
 set -e
 
@@ -17,9 +18,6 @@ gcloud services enable container.googleapis.com
 
 terraform version
 
-if [ "$TYPE" = "APPLY" ] ; then
-  terraform apply -auto-approve
-fi
-if [ "$TYPE" = "DESTROY" ] ; then
-  terraform destroy -auto-approve
-fi
+terraform $COMMAND
+
+echo "FINISHED"

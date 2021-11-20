@@ -24,3 +24,4 @@ RUN terraform init
 COPY /scripts /scripts
 
 ENTRYPOINT ["/scripts/init.sh"]
+CMD ["plan"]
