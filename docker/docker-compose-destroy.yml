@@ -7,6 +7,8 @@ services:
     command:
       - destroy -auto-approve
     environment:
-      - CREDENTIAL=${CREDENTIAL}
+      - CREDENTIAL_GCLOUD=${CREDENTIAL_GCLOUD}
+      - CREDENTIAL_DOCKERHUB=${CREDENTIAL_DOCKERHUB}
+      - CREDENTIAL_GITHUB=${CREDENTIAL_GITHUB}
     volumes:
       - ./volumes/terraform.tfstate:/scripts/terraform.tfstate

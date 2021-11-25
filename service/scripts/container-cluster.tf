@@ -1,3 +1,5 @@
+data "google_client_config" "template-gke-client-config" {}
+
 resource "google_container_cluster" "template-gke-cluster" {
   name     = "template-gke-cluster"
   location = var.location

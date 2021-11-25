@@ -2,8 +2,8 @@ variable "project" {
   default = "personal-331119"
 }
 
-variable "credentials" {
-  default = "/scripts/credential.json"
+variable "credential-gcloud" {
+  default = "/scripts/credential_gcloud.json"
 }
 
 variable "location" {

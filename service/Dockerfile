@@ -15,7 +15,7 @@ RUN mkdir -p /usr/local/gcloud \
 ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
 
 # install 'lib providers' by terraform
-COPY /scripts/provider.tf /scripts/provider.tf
+COPY /scripts/provider-version.tf /scripts/provider-version.tf
 COPY /scripts/variables.tf /scripts/variables.tf
 WORKDIR /scripts
 RUN terraform init
