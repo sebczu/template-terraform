@@ -1,4 +1,4 @@
-name: Apply
+name: Terraform command
 
 on:
   workflow_dispatch:
