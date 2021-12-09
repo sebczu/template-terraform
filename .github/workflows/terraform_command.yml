@@ -32,3 +32,9 @@ jobs:
             -e "CREDENTIAL_GITHUB=${{ secrets.CREDENTIAL_GITHUB }}" \
             sebczu/personal:template-terraform-0.0.1 \
             "${{ github.event.inputs.command }}"
+
+      - name: Push terraform state
+        run: |
+          git add .
+          git commit -m "Update terraform state"
+          git push -u origin master
