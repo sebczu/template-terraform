@@ -3,7 +3,7 @@ name: Terraform command
 on:
   workflow_dispatch:
     inputs:
-      name:
+      command:
         description: 'Terraform command'
         default: 'apply -auto-approve'
         required: true
@@ -18,6 +18,11 @@ jobs:
 
       - name: Run terraform command
         run: |
-          echo "Command ${{ github.event.inputs.name }}"
-          ls
-          cat docker/volumes/terraform.tfstate
+          echo "Command ${{ github.event.inputs.command }}"
+          docker run \
+            -v $(pwd)/docker/volumes/terraform.tfstate:/scripts/terraform.tfstate \
+            -e "CREDENTIAL_GCLOUD={BASE_64_CREDENTIAL_GCLOUD}" \
+            -e "CREDENTIAL_DOCKERHUB={BASE_64_CREDENTIAL_DOCKERHUB}" \
+            -e "CREDENTIAL_GITHUB={BASE_64_CREDENTIAL_GITHUB}" \
+            sebczu/personal:template-terraform-0.0.1 \
+            "${{ github.event.inputs.command }}"
