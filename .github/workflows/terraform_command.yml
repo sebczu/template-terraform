@@ -27,8 +27,8 @@ jobs:
           echo "Command ${{ github.event.inputs.command }}"
           docker run \
             -v $(pwd)/docker/volumes/terraform.tfstate:/scripts/terraform.tfstate \
-            -e "CREDENTIAL_GCLOUD={BASE_64_CREDENTIAL_GCLOUD}" \
-            -e "CREDENTIAL_DOCKERHUB={BASE_64_CREDENTIAL_DOCKERHUB}" \
-            -e "CREDENTIAL_GITHUB={BASE_64_CREDENTIAL_GITHUB}" \
+            -e "CREDENTIAL_GCLOUD=${{ secrets.CREDENTIAL_GCLOUD }}" \
+            -e "CREDENTIAL_DOCKERHUB=${{ secrets.CREDENTIAL_DOCKERHUB }}" \
+            -e "CREDENTIAL_GITHUB=${{ secrets.CREDENTIAL_GITHUB }}" \
             sebczu/personal:template-terraform-0.0.1 \
             "${{ github.event.inputs.command }}"
