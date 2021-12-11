@@ -20,6 +20,19 @@ gcloud services enable container.googleapis.com
 
 terraform version
 
+# fetch terraform.tfstate
+git clone https://$(jq .token credential_github.json --raw-output)@github.com/sebczu/template-terraform-state.git
+mv template-terraform-state/terraform.tfstate /
+
 terraform $COMMAND
+
+# push terraform.tfstate
+cp terraform.tfstate template-terraform-state/
+cd template-terraform-state
+git config --global user.name 'sebczu'
+git config --global user.email 'dev.sebastian.czubala@gmail.com'
+git add .
+git commit -m "Update terraform state"
+git push -u origin master
 
 echo "FINISHED"

@@ -26,15 +26,8 @@ jobs:
         run: |
           echo "Command ${{ github.event.inputs.command }}"
           docker run \
-            -v $(pwd)/docker/volumes/terraform.tfstate:/scripts/terraform.tfstate \
             -e "CREDENTIAL_GCLOUD=${{ secrets.CREDENTIAL_GCLOUD }}" \
             -e "CREDENTIAL_DOCKERHUB=${{ secrets.CREDENTIAL_DOCKERHUB }}" \
             -e "CREDENTIAL_GITHUB=${{ secrets.CREDENTIAL_GITHUB }}" \
             sebczu/personal:template-terraform-0.0.1 \
             "${{ github.event.inputs.command }}"
-
-      - name: Push terraform state
-        run: |
-          git add .
-          git commit -m "Update terraform state"
-          git push -u origin master

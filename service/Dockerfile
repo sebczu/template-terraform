@@ -1,11 +1,13 @@
 FROM hashicorp/terraform:1.0.11
 
-# install bash, curl, python
+# install bash, curl, python, git, jq
 RUN apk update && apk upgrade
 RUN apk add --no-cache \
   bash \
   curl \
-  python3
+  python3 \
+  git \
+  jq
 
 # install gcloud
 RUN curl https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz > /tmp/google-cloud-sdk.tar.gz

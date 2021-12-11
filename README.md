@@ -19,7 +19,6 @@ docker-compose -f docker/docker-compose-destroy.yml up
 ```bash
 docker run -it \
 --entrypoint /bin/bash \
--v $(pwd)/docker/volumes/terraform.tfstate:/scripts/terraform.tfstate \
 -e "CREDENTIAL_GCLOUD={BASE_64_CREDENTIAL_GCLOUD}" \
 -e "CREDENTIAL_DOCKERHUB={BASE_64_CREDENTIAL_DOCKERHUB}" \
 -e "CREDENTIAL_GITHUB={BASE_64_CREDENTIAL_GITHUB}" \
@@ -29,7 +28,6 @@ sebczu/personal:template-terraform-0.0.1
 #### 4. Docker run container (create cluster)
 ```bash
 docker run \
--v $(pwd)/docker/volumes/terraform.tfstate:/scripts/terraform.tfstate \
 -e "CREDENTIAL_GCLOUD={BASE_64_CREDENTIAL_GCLOUD}" \
 -e "CREDENTIAL_DOCKERHUB={BASE_64_CREDENTIAL_DOCKERHUB}" \
 -e "CREDENTIAL_GITHUB={BASE_64_CREDENTIAL_GITHUB}" \
@@ -40,7 +38,6 @@ sebczu/personal:template-terraform-0.0.1 \
 #### 5. Docker run container (destroy cluster)
 ```bash
 docker run \
--v $(pwd)/docker/volumes/terraform.tfstate:/scripts/terraform.tfstate \
 -e "CREDENTIAL_GCLOUD={BASE_64_CREDENTIAL_GCLOUD}" \
 -e "CREDENTIAL_DOCKERHUB={BASE_64_CREDENTIAL_DOCKERHUB}" \
 -e "CREDENTIAL_GITHUB={BASE_64_CREDENTIAL_GITHUB}" \
