@@ -3,3 +3,9 @@ resource "kubernetes_namespace" "template-namespace" {
     name = "template"
   }
 }
+
+resource "kubernetes_namespace" "nginx-namespace" {
+  metadata {
+    name = "ingress-nginx"
+  }
+}
