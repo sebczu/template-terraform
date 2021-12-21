@@ -13,3 +13,7 @@ variable "location" {
 variable "region" {
   default = "europe-central2"
 }
+
+variable "kubernetes-version" {
+  default = "1.21.5-gke.1302"
+}

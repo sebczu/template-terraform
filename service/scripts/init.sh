@@ -22,7 +22,7 @@ terraform version
 
 # fetch terraform.tfstate
 git clone https://$(jq .token credential_github.json --raw-output)@github.com/sebczu/template-terraform-state.git
-mv template-terraform-state/terraform.tfstate /
+mv template-terraform-state/terraform.tfstate /scripts
 
 terraform $COMMAND
 

@@ -1,5 +1,6 @@
 resource "helm_release" "template" {
   name  = "template"
+  depends_on = [kubernetes_namespace.template-namespace]
 
   repository = "https://raw.githubusercontent.com/sebczu/helm-charts/master/"
   chart = "template"

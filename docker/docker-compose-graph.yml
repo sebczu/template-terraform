@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+
+  template-terraform-destroy:
+    image: sebczu/personal:template-terraform-0.0.1
+    container_name: template-terraform-destroy
+    command:
+      - graph
+    environment:
+      - CREDENTIAL_GCLOUD=${CREDENTIAL_GCLOUD}
+      - CREDENTIAL_DOCKERHUB=${CREDENTIAL_DOCKERHUB}
+      - CREDENTIAL_GITHUB=${CREDENTIAL_GITHUB}

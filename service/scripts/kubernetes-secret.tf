@@ -1,4 +1,6 @@
 resource "kubernetes_secret" "registry-credential" {
+  depends_on = [kubernetes_namespace.template-namespace]
+
   metadata {
     name = "registry-credential"
     namespace= "template"

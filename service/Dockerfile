@@ -1,4 +1,4 @@
-FROM hashicorp/terraform:1.0.11
+FROM hashicorp/terraform:1.1.2
 
 # install bash, curl, python, git, jq
 RUN apk update && apk upgrade

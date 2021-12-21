@@ -3,6 +3,7 @@ resource "google_container_node_pool" "template-gke-node-pool" {
   location   = var.location
   cluster    = google_container_cluster.template-gke-cluster.name
   node_count = 1
+  version    = var.kubernetes-version
 
   node_config {
     image_type        = "COS_CONTAINERD"
