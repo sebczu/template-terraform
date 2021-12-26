@@ -17,3 +17,7 @@ variable "region" {
 variable "kubernetes-version" {
   default = "1.21.5-gke.1302"
 }
+
+variable "mysql-version" {
+  default = "MYSQL_5_7"
+}
