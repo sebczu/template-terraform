@@ -8,8 +8,8 @@ resource "random_string" "template-sql-database-random" {
   special = false
 }
 
-resource "google_sql_database_instance" "template-sql-database" {
-  name             = "template-sql-database-${random_string.template-sql-database-random.result}"
+resource "google_sql_database_instance" "template-sql-database-instance" {
+  name             = "template-sql-database-instance-${random_string.template-sql-database-random.result}"
   database_version = var.mysql-version
   region           = var.region
 
@@ -23,12 +23,22 @@ resource "google_sql_database_instance" "template-sql-database" {
     backup_configuration {
       enabled   = false
     }
+
+    maintenance_window {
+      day   = 1
+      hour  = 3
+      update_track = "stable"
+    }
   }
 }
 
 resource "google_sql_user" "template-sql-user" {
-
-  instance = google_sql_database_instance.template-sql-database.name
+  instance = google_sql_database_instance.template-sql-database-instance.name
   name     = local.credential_gcloud_sql.username
   password = local.credential_gcloud_sql.password
+}
+
+resource "google_sql_database" "template-sql-database" {
+  name     = "template"
+  instance = google_sql_database_instance.template-sql-database-instance.name
 }

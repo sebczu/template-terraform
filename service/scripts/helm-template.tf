@@ -11,7 +11,7 @@ resource "helm_release" "template" {
 
   set {
     name  = "gcloud.sql.connection"
-    value = google_sql_database_instance.template-sql-database.connection_name
+    value = google_sql_database_instance.template-sql-database-instance.connection_name
   }
 
   set {
