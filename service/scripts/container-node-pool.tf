@@ -8,7 +8,7 @@ resource "google_container_node_pool" "template-gke-node-pool" {
   node_config {
     image_type        = "COS_CONTAINERD"
     preemptible       = true
-    machine_type      = "e2-medium"
+    machine_type      = "e2-highcpu-4"
     local_ssd_count   = 0
     disk_size_gb      = 10
   }

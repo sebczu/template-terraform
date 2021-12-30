@@ -18,4 +18,14 @@ resource "helm_release" "template" {
     name  = "gcloud.credential"
     value = filebase64(var.credential-gcloud)
   }
+
+  set {
+    name  = "database.username"
+    value = google_sql_user.template-sql-user.name
+  }
+
+  set {
+    name  = "database.password"
+    value = google_sql_user.template-sql-user.password
+  }
 }
