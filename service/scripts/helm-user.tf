@@ -1,9 +1,9 @@
-resource "helm_release" "template" {
-  name        = "template"
+resource "helm_release" "user" {
+  name        = "user"
   depends_on  = [kubernetes_namespace.template-namespace]
 
   repository  = "https://raw.githubusercontent.com/sebczu/helm-charts/master/"
-  chart       = "template"
+  chart       = "user"
   version     = "0.0.1"
 
   repository_username = local.credential_github.username
